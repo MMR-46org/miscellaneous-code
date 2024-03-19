@@ -1,0 +1,88 @@
+-  name: download prometheus
+   ansible.builtin.unarchive:
+     src: https://github.com/prometheus/prometheus/releases/download/v{{ prometheus_version }}/prometheus-{{ prometheus_version }}.linux-amd64.tar.gz
+     dest: /opt
+     remote_src: true
+
+
+-  name: copy prometheus service file
+   ansible.builtin.template:
+     src: prometheus.service
+     dest: /etc/systemd/system/prometheus.service
+
+
+
+- name: copy prometheus server configuration
+  ansible.builtin.template:
+    src: prometheus.yml
+    dest: /opt/prometheus-{{ prometheus_version}}.linux-amd64/prometheus.yml
+
+
+- name: copy prometheus alerts configuration
+  ansible.builtin.template:
+    src: alerts.yml
+    dest: /opt/prometheus-{{prometheus_version}}.linux-amd64/alerts.yml
+
+
+-  name: start prometheus service
+   ansible.builtin.systemd:
+     name: prometheus
+     state: restarted
+     enabled: yes
+     daemon-reload: yes
+
+
+-  name: install grafana
+   ansible.builtin.dnf:
+     name: https://dl.grafana.com/enterprise/release/grafana-enterprise-10.3.1-1.x86_64.rpm
+     state: installed
+
+-  name: copy grafana json code
+   ansible.builtin.copy:
+     src: grafana-expense.json
+     dest: /tmp/grafana-expense.json
+
+
+- name: Import Grafana dashboard
+  community.grafana.grafana_dashboard:
+    grafana_url: http://grafana.madhanmohanreddy.tech:3000
+    grafana_api_key: "{{ lookup('amazon.aws.aws_ssm', 'grafana.apikey', region='us-east-1' ) }}"
+    state: present
+    commit_message: Updated by ansible
+    overwrite: true
+    path: /tmp/grafana-expense.json
+
+
+-  name: start grafana service
+   ansible.builtin.systemd_service:
+     name: grafana-server
+     state: restarted
+     enabled: yes
+
+
+-  name: Download Alert Manager
+   ansible.builtin.unarchive:
+     src: https://github.com/prometheus/alertmanager/releases/download/v{{alertmanager_version}}/alertmanager-{{alertmanager_version}}.linux-amd64.tar.gz
+     dest: /opt
+     remote_src: true
+
+-  name: copy alertmanager service file
+   ansible.builtin.template:
+     src: alertmanager.service
+     dest: /etc/systemd/system/alertmanager.service
+
+
+
+-  name: copy alertmanager server configuration
+   ansible.builtin.template:
+     src: alertmanager.yml
+     dest: /opt/alertmanager-{{ alertmanager_version }}.linux-amd64/alertmanager.yml
+
+
+
+-  name: start alertmanager service
+   ansible.builtin.systemd:
+     name: alertmanager
+     state: started
+     enabled: yes
+     daemon-reload: yes

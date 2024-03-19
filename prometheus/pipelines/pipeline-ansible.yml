@@ -1,0 +1,24 @@
+format_version: 10
+pipelines:
+  prometheus-ansible:
+    group: tools
+    label_template: ${COUNT}
+    materials:
+      ansible:
+        git: https://github.com/MMR-46org/miscellaneous-code
+        shallow_clone: false
+        auto_update: true
+        branch: main
+    stages:
+      - DEV:
+          fetch_materials: true
+          approval:
+            type: manual
+          jobs:
+            deployment:
+              timeout: 0
+              tasks:
+                - exec:
+                    command: bash
+                    working_directory: prometheus
+                    arguments: ["ansible.sh"]
