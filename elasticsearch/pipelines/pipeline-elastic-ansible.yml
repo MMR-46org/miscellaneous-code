@@ -1,6 +1,6 @@
 format_version: 10
 pipelines:
-  elasticsearch-ansible:
+  elastic-search-ansible:
     group: tools
     label_template: ${COUNT}
     materials:
