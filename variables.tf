@@ -1,6 +1,7 @@
 variable "tools" {
-  sonarqube   =  {
-    instance_type   =  "t3.large"
+  default = {
+    sonarqube = {
+      instance_type = "t3.large"
+    }
   }
-
 }
