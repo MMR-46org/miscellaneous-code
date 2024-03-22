@@ -32,9 +32,14 @@
      daemon-reload: yes
 
 
+-   name: copy grafana repo file
+    ansible.builtin.template:
+      src: grafana.repo
+      dest: /etc/yum.repos.d/grafana.repo
+
 -  name: install grafana
    ansible.builtin.dnf:
-     name: https://dl.grafana.com/enterprise/release/grafana-enterprise-10.3.1-1.x86_64.rpm
+     name: grafana-enterprise
      state: installed
 
 -  name: copy grafana json code
