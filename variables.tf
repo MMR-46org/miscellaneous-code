@@ -18,5 +18,22 @@ variable "tools" {
     port        =  9090
     priority    =  102
   }
- }
+
+  grafana = {
+    instance_type = "t3.small"
+    port          =  3000
+    priority      =  103
+  }
+
+  alertmanager   = {
+    instance_type = "t3.small"
+    port          =  9093
+    priority      =  104
+  }
+
+
+
+
+
+  }
 }
