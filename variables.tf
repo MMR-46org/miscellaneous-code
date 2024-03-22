@@ -2,9 +2,21 @@ variable "tools" {
   default = {
     sonarqube = {
       instance_type = "t3.large"
-      vpc_id      =  "vpc-05f8f5529d61a83c7"
       port        =  9000
       priority    =  100
     }
+  }
+
+
+  elasticsearch = {
+    instance_type = "m6in.large"
+    port        =  80
+    priority    =  101
+  }
+
+  elasticsearch = {
+    instance_type = "t3.small"
+    port        =  9090
+    priority    =  102
   }
 }
