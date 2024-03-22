@@ -8,6 +8,8 @@
      src: https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-10.4.1.88267.zip
      dest: /home/sonarqube
      remote_src: yes
+     owner: sonarqube
+     group: sonarqube
 
 
 
