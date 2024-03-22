@@ -21,4 +21,3 @@ pipelines:
                 - exec:
                     command: bash
                     arguments: ["ansible.sh", "elasticsearch"]
-                    working_directory: elasticsearch
