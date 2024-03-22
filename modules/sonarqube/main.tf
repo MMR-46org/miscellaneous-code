@@ -19,7 +19,34 @@ resource "aws_instance" "sonarqube" {
 resource "aws_route53_record" "sonarqube" {
   zone_id = "Z0189341LG4L24HIU4QF"
   name    = var.tool
-  type    =  "A"
+  type    =  "CNAME"
   ttl     =  30
-  records = [aws_instance.sonarqube.public_ip]
+  records = [var.dns_name]
+}
+
+
+resource "aws_lb_listener_rule" "rule" {
+  listener_arn = var.listener_arn
+  priority     = var.priority
+
+  action {
+    type             = "forward"
+    target_group_arn = aws_lb_target_group.tg.arn
+  }
+
+
+  condition {
+    host_header {
+      values = ["${var.tool}.madhanmohanreddy.tech"]
+    }
+  }
+}
+
+
+
+resource "aws_lb_target_group" "tg" {
+  name     = "${var.tool}-tg"
+  port     = var.port
+  protocol = "HTTP"
+  vpc_id   = var.vpc_id
 }
