@@ -14,7 +14,7 @@ variable "tools" {
     priority    =  101
   }
 
-  elasticsearch = {
+  prometheus = {
     instance_type = "t3.small"
     port        =  9090
     priority    =  102

@@ -1,4 +1,4 @@
-resource "aws_instance" "sonarqube" {
+resource "aws_instance" "ec2" {
   ami                      =  data.aws_ami.centos8.image_id
   instance_type            = var.instance_type
   vpc_security_group_ids   = ["sg-04e445f50c19e84f2"]
@@ -16,7 +16,7 @@ resource "aws_instance" "sonarqube" {
   }
 }
 
-resource "aws_route53_record" "sonarqube" {
+resource "aws_route53_record" "record" {
   zone_id = "Z0189341LG4L24HIU4QF"
   name    = var.tool
   type    =  "CNAME"
@@ -54,6 +54,6 @@ resource "aws_lb_target_group" "tg" {
 
 resource "aws_lb_target_group_attachment" "attach" {
   target_group_arn = aws_lb_target_group.tg.arn
-  target_id        = aws_instance.sonarqube.id
+  target_id        = aws_instance.ec2.id
   port             = var.port
 }

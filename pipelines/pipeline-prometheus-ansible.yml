@@ -20,4 +20,4 @@ pipelines:
               tasks:
                 - exec:
                     command: bash
-                    arguments: ["ansible.sh", "prometheus"]
+                    arguments: ["ansible.sh", "prometheus" ]
