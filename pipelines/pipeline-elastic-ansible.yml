@@ -20,5 +20,5 @@ pipelines:
               tasks:
                 - exec:
                     command: bash
-                    arguments: ["ansible.sh"]
+                    arguments: ["ansible.sh", "elasticsearch"]
                     working_directory: elasticsearch
