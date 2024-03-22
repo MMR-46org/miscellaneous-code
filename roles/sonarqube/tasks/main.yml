@@ -15,7 +15,7 @@
 
 -  name: install java
    ansible.builtin.dnf:
-     name: java-17-openjdk.x86_64
+     name: java-17-openjdk-src.x86_64
      state: installed
 
 
