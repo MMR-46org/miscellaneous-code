@@ -5,7 +5,6 @@ variable "tools" {
       port        =  9000
       priority    =  100
     }
-  }
 
 
   elasticsearch = {
@@ -19,4 +18,5 @@ variable "tools" {
     port        =  9090
     priority    =  102
   }
+ }
 }
