@@ -9,3 +9,24 @@
      dest: /home/sonarqube
      remote_src: yes
 
+
+
+-  name: install java
+   ansible.builtin.dnf:
+     name: java-17-openjdk.x86_64
+     state: installed
+
+
+-  name: copy sonarqube service file
+   ansible.builtin.template:
+     src: sonarqube.service
+     dest: /etc/systemd/system/sonarqube.service
+
+
+-  name: start sonarqube service
+   ansible.builtin.systemd_service:
+     name: sonarqube
+     state: started
+     enabled:  yes
+
+
