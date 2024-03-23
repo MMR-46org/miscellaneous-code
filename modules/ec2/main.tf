@@ -24,6 +24,13 @@ resource "aws_route53_record" "record" {
   records = [var.dns_name]
 }
 
+resource "aws_route53_record" "record-private-ec2" {
+  zone_id = "Z0189341LG4L24HIU4QF"
+  name    = "${var.tool}-internal"
+  type    =  "A"
+  ttl     =  30
+  records = [aws_instance.ec2.private_ip]
+}
 
 resource "aws_lb_listener_rule" "rule" {
   listener_arn = var.listener_arn
