@@ -6,30 +6,29 @@ variable "tools" {
       priority    =  100
     }
 
+    elasticsearch = {
+      instance_type = "m6in.large"
+      port        =  80
+      priority    =  101
+    }
 
-  elasticsearch = {
-    instance_type = "m6in.large"
-    port        =  80
-    priority    =  101
-  }
+    prometheus = {
+     instance_type = "t3.small"
+     port        =  9090
+     priority    =  102
+    }
 
-  prometheus = {
-    instance_type = "t3.small"
-    port        =  9090
-    priority    =  102
-  }
+    grafana = {
+      instance_type = "t3.small"
+      port          =  3000
+      priority      =  103
+    }
 
-  grafana = {
-    instance_type = "t3.small"
-    port          =  3000
-    priority      =  103
-  }
-
-  alertmanager   = {
-    instance_type = "t3.small"
-    port          =  9093
-    priority      =  104
-  }
+    alertmanager   = {
+      instance_type = "t3.small"
+      port          =  9093
+      priority      =  104
+    }
 
 
 
