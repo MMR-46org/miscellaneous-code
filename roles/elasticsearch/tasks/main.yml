@@ -18,17 +18,16 @@
      -  nginx
 
 
--  name: copy the logstash config file
-   ansible.builtin.template:
-     src: logstash.conf
-     dest: /etc/logstash/conf.d/logstash.conf
-
-
-
 -  name: copy the nginx config file
    ansible.builtin.template:
      src: nginx.conf
      dest: /etc/nginx/nginx.conf
+
+
+-  name: copy the logstash config file
+   ansible.builtin.template:
+     src: logstash.conf
+     dest: /etc/logstash/conf.d/logstash.conf
 
 
 -  name: start ELK Stack
