@@ -9,7 +9,7 @@
      state: installed
 
 -  name: copy grafana json code
-   ansible.builtin.template:
+   ansible.builtin.copy:
      src: grafana-expense.json
      dest: /tmp/grafana-expense.json
 
