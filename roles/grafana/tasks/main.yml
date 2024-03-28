@@ -12,6 +12,7 @@
    ansible.builtin.template:
      src: grafana-expense.json
      dest: /tmp/grafana-expense.json
+     variable: { ansible_jinja2_undefined: 'ignore' }
 
 
 - name: Import Grafana dashboard
@@ -29,7 +30,3 @@
      name: grafana-server
      state: restarted
      enabled: yes
-
-
-- vars:
-    ansible_jinja2_undefined: 'strict'
