@@ -3,6 +3,7 @@ resource "aws_instance" "ec2" {
   instance_type            = var.instance_type
   vpc_security_group_ids   = ["sg-04e445f50c19e84f2"]
   subnet_id                = "subnet-0b07ed0f580da13ce"
+  iam_instance_profile     = aws_iam_instance_profile.main.name
 
   instance_market_options{
     market_type = "spot"
@@ -63,4 +64,35 @@ resource "aws_lb_target_group_attachment" "attach" {
   target_group_arn = aws_lb_target_group.tg.arn
   target_id        = aws_instance.ec2.id
   port             = var.port
+}
+
+
+resource "aws_iam_role" "main" {
+  name               = "${var.tool}-role"
+
+  assume_role_policy = jsonencode({
+    Version   = "2012-10-17"
+    Statement = [
+      {
+        Action    = "sts:AssumeRole"
+        Effect    = "Allow"
+        Sid       = ""
+        Principal = {
+          Service = "ec2.amazonaws.com"
+        }
+      },
+    ]
+  })
+
+
+  inline_policy {
+    name = "parameter-store"
+
+    policy = jsonencode()
+  }
+}
+
+resource "aws_iam_instance_profile" "main" {
+  name = "${var.tool}-role"
+  role = aws_iam_role.main.name
 }
