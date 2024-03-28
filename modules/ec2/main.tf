@@ -83,13 +83,6 @@ resource "aws_iam_role" "main" {
       },
     ]
   })
-
-
-  inline_policy {
-    name = "parameter-store"
-
-    policy = jsonencode()
-  }
 }
 
 resource "aws_iam_instance_profile" "main" {
