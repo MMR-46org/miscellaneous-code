@@ -12,7 +12,6 @@
    ansible.builtin.template:
      src: grafana-expense.json
      dest: /tmp/grafana-expense.json
-     variable: { ansible_jinja2_undefined: 'ignore' }
 
 
 - name: Import Grafana dashboard
