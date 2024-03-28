@@ -97,7 +97,7 @@
           "editorMode": "code",
           "expr": "node_systemd_unit_state{exported_name=\"nginx.service\",state=\"active\"}",
           "instant": false,
-          "legendFormat": "{{exported_name}}",
+          "legendFormat": {% raw %}"{{exported_name}}",{% endraw %}
           "range": true,
           "refId": "A"
         },

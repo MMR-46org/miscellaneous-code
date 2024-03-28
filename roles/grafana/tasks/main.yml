@@ -29,3 +29,7 @@
      name: grafana-server
      state: restarted
      enabled: yes
+
+
+- vars:
+    ansible_jinja2_undefined: 'strict'
