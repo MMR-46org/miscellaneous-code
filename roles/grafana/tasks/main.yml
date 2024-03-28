@@ -8,6 +8,12 @@
      name: grafana-enterprise
      state: installed
 
+-  name: start grafana service
+   ansible.builtin.systemd_service:
+     name: grafana-server
+     state: restarted
+     enabled: yes
+
 -  name: copy grafana json code
    ansible.builtin.template:
      src: grafana-expense.json
@@ -22,10 +28,3 @@
     commit_message: Updated by ansible
     overwrite: true
     path: /tmp/grafana-expense.json
-
-
--  name: start grafana service
-   ansible.builtin.systemd_service:
-     name: grafana-server
-     state: restarted
-     enabled: yes
