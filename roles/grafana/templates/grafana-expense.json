@@ -24,7 +24,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ddf03kbg5bapsf"
+        "uid": "ddh1wfkqmnjeof"
       },
       "fieldConfig": {
         "defaults": {
@@ -92,7 +92,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ddf03kbg5bapsf"
+            "uid": "ddh1wfkqmnjeof"
           },
           "editorMode": "code",
           "expr": "node_systemd_unit_state{exported_name=\"nginx.service\",state=\"active\"}",
@@ -104,7 +104,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ddf03kbg5bapsf"
+            "uid": "ddh1wfkqmnjeof"
           },
           "editorMode": "code",
           "expr": "node_systemd_unit_state{exported_name=\"backend.service\",state=\"active\"}",
@@ -121,7 +121,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ddf03kbg5bapsf"
+        "uid": "ddh1wfkqmnjeof"
       },
       "fieldConfig": {
         "defaults": {
@@ -173,7 +173,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ddf03kbg5bapsf"
+            "uid": "ddh1wfkqmnjeof"
           },
           "editorMode": "code",
           "expr": "avg by (instance)(100 - (rate(node_cpu_seconds_total {mode=\"idle\"}[1m])* 100))",
@@ -189,7 +189,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ddf03kbg5bapsf"
+        "uid": "ddh1wfkqmnjeof"
       },
       "fieldConfig": {
         "defaults": {
@@ -257,7 +257,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ddf03kbg5bapsf"
+            "uid": "ddh1wfkqmnjeof"
           },
           "editorMode": "code",
           "expr": "up{job=\"ec2\"}",
@@ -273,7 +273,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ddf03kbg5bapsf"
+        "uid": "ddh1wfkqmnjeof"
       },
       "fieldConfig": {
         "defaults": {
@@ -357,7 +357,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "ddf03kbg5bapsf"
+            "uid": "ddh1wfkqmnjeof"
           },
           "editorMode": "code",
           "expr": "increase(node_ethtool_pps_allowance_exceeded[5m])",
@@ -383,7 +383,7 @@
   "timepicker": {},
   "timezone": "browser",
   "title": "expense",
-  "uid": "fdf05ift42ewwf",
+  "uid": "cdh1wshdpph4wd",
   "version": 5,
   "weekStart": ""
 }
