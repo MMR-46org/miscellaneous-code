@@ -23,7 +23,7 @@
 
 -  name: Create job
    community.general.jenkins_job:
-     config: "{{ lookup('file', 'templates/pipeline.xml') }}"
+     config: "{{ lookup('template', 'templates/pipeline.xml') }}"
      name: "{{item}}"
      password: admin123
      url: http://jenkins-internal.madhanmohanreddy.tech:8080
