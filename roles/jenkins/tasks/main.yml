@@ -30,12 +30,12 @@
      user: admin
    loop:
      - frontend
-#     - catalogue
-#     - user
-#     - cart
-#     - payment
-#     - shipping
-#     - dispatch
+     - catalogue
+     - user
+     - cart
+     - payment
+     - shipping
+     - dispatch
 
 
 
