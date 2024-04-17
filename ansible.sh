@@ -3,4 +3,7 @@ ssh_password=$(aws ssm get-parameter --name "ssh.password" --with-decryption  --
 
 tool_name=$1
 IP=$(aws ec2 describe-instances  --filters Name=tag:Name,Values=$tool_name --query  'Reservations[*].Instances[*].PrivateIpAddress'  --output  text)
+
+echo "IP Address of $tool_name: $IP"
+
 ansible-playbook -i ${IP}, playbook.yml -e ansible_user=$ssh_username  -e ansible_password=$ssh_password -e tool_name=$tool_name
