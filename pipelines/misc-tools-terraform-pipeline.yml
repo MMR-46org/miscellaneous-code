@@ -36,6 +36,9 @@ pipelines:
             deployment:
               timeout: 0
               tasks:
+                - exec:
+                      command: terraform
+                      arguments: [ "init" ]
 
                 - exec:
                     command: terraform
