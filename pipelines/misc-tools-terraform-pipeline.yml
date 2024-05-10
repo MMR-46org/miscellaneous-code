@@ -25,3 +25,20 @@ pipelines:
                 - exec:
                     command: terraform
                     arguments: [ "apply","-auto-approve"]
+
+
+
+      - destroy:
+          fetch_materials: true
+          approval:
+            type: manual
+          jobs:
+            deployment:
+              timeout: 0
+              tasks:
+
+                - exec:
+                    command: terraform
+                    arguments: [ "destroy","-auto-approve" ]
+
+
