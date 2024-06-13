@@ -1,0 +1,81 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<org.jenkinsci.plugins.workflow.multibranch.WorkflowMultiBranchProject plugin="workflow-multibranch@783.va_6eb_ef636fb_d">
+    <actions/>
+    <description>{{item}} CI Job</description>
+    <displayName>{{item}}</displayName>
+    <properties>
+        <org.jenkinsci.plugins.workflow.libs.FolderLibraries plugin="pipeline-groovy-lib@710.v4b_94b_077a_808">
+            <libraries>
+                <org.jenkinsci.plugins.workflow.libs.LibraryConfiguration>
+                    <name>central-library</name>
+                    <retriever class="org.jenkinsci.plugins.workflow.libs.SCMSourceRetriever">
+                        <clone>false</clone>
+                        <scm class="jenkins.plugins.git.GitSCMSource" plugin="git@5.2.2">
+                            <id>4d8784ae-1905-4513-a10b-e691250ddaee</id>
+                            <remote>https://github.com/MMR-46org/jenkins-shared-library.git</remote>
+                            <credentialsId></credentialsId>
+                            <traits>
+                                <jenkins.plugins.git.traits.BranchDiscoveryTrait/>
+                            </traits>
+                        </scm>
+                    </retriever>
+                    <defaultVersion>main</defaultVersion>
+                    <implicit>false</implicit>
+                    <allowVersionOverride>true</allowVersionOverride>
+                    <includeInChangesets>true</includeInChangesets>
+                </org.jenkinsci.plugins.workflow.libs.LibraryConfiguration>
+            </libraries>
+        </org.jenkinsci.plugins.workflow.libs.FolderLibraries>
+    </properties>
+    <folderViews class="jenkins.branch.MultiBranchProjectViewHolder" plugin="branch-api@2.1169.va_f810c56e895">
+        <owner class="org.jenkinsci.plugins.workflow.multibranch.WorkflowMultiBranchProject" reference="../.."/>
+    </folderViews>
+    <healthMetrics/>
+    <icon class="jenkins.branch.MetadataActionFolderIcon" plugin="branch-api@2.1169.va_f810c56e895">
+        <owner class="org.jenkinsci.plugins.workflow.multibranch.WorkflowMultiBranchProject" reference="../.."/>
+    </icon>
+    <orphanedItemStrategy class="com.cloudbees.hudson.plugins.folder.computed.DefaultOrphanedItemStrategy" plugin="cloudbees-folder@6.928.v7c780211d66e">
+        <pruneDeadBranches>true</pruneDeadBranches>
+        <daysToKeep>-1</daysToKeep>
+        <numToKeep>-1</numToKeep>
+        <abortBuilds>false</abortBuilds>
+    </orphanedItemStrategy>
+    <triggers>
+        <com.igalg.jenkins.plugins.mswt.trigger.ComputedFolderWebHookTrigger plugin="multibranch-scan-webhook-trigger@1.0.11">
+            <spec></spec>
+            <token>{{item}}</token>
+        </com.igalg.jenkins.plugins.mswt.trigger.ComputedFolderWebHookTrigger>
+    </triggers>
+    <disabled>false</disabled>
+    <sources class="jenkins.branch.MultiBranchProject$BranchSourceList" plugin="branch-api@2.1169.va_f810c56e895">
+        <data>
+            <jenkins.branch.BranchSource>
+                <source class="org.jenkinsci.plugins.github_branch_source.GitHubSCMSource" plugin="github-branch-source@1789.v5b_0c0cea_18c3">
+                    <id>93b35ceb-0aab-44d8-94f6-f9177c631730</id>
+                    <apiUri>https://api.github.com</apiUri>
+                    <credentialsId>TOKEN</credentialsId>
+                    <repoOwner>MMR-46org</repoOwner>
+                    <repository>cart</repository>
+                    <repositoryUrl>https://github.com/MMR-46org/{{item}}</repositoryUrl>
+                    <traits>
+                        <org.jenkinsci.plugins.github__branch__source.BranchDiscoveryTrait>
+                            <strategyId>3</strategyId>
+                        </org.jenkinsci.plugins.github__branch__source.BranchDiscoveryTrait>
+                        <org.jenkinsci.plugins.github__branch__source.OriginPullRequestDiscoveryTrait>
+                            <strategyId>1</strategyId>
+                        </org.jenkinsci.plugins.github__branch__source.OriginPullRequestDiscoveryTrait>
+                        <org.jenkinsci.plugins.github__branch__source.TagDiscoveryTrait/>
+                    </traits>
+                </source>
+                <strategy class="jenkins.branch.DefaultBranchPropertyStrategy">
+                    <properties class="empty-list"/>
+                </strategy>
+            </jenkins.branch.BranchSource>
+        </data>
+        <owner class="org.jenkinsci.plugins.workflow.multibranch.WorkflowMultiBranchProject" reference="../.."/>
+    </sources>
+    <factory class="org.jenkinsci.plugins.workflow.multibranch.WorkflowBranchProjectFactory">
+        <owner class="org.jenkinsci.plugins.workflow.multibranch.WorkflowMultiBranchProject" reference="../.."/>
+        <scriptPath>Jenkinsfile</scriptPath>
+    </factory>
+</org.jenkinsci.plugins.workflow.multibranch.WorkflowMultiBranchProject>

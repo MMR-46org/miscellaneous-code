@@ -20,10 +20,9 @@
      enabled: yes
 
 
-
--  name: Create job
+-  name: Create Multi Branch Pipeline Jobs
    community.general.jenkins_job:
-     config: "{{ lookup('template', 'templates/pipeline.xml') }}"
+     config: "{{ lookup('template', 'templates/multibranch.xml') }}"
      name: "{{item}}"
      password: admin123
      url: http://jenkins-internal.madhanmohanreddy.tech:8080
@@ -35,9 +34,26 @@
      - cart
      - payment
      - shipping
-     - dispatch
-     - parameter-store-init-container-image
-     - schema-loader
+
+
+
+#-  name: Create job
+#   community.general.jenkins_job:
+#     config: "{{ lookup('template', 'templates/pipeline.xml') }}"
+#     name: "{{item}}"
+#     password: admin123
+#     url: http://jenkins-internal.madhanmohanreddy.tech:8080
+#     user: admin
+#   loop:
+#     - frontend
+#     - catalogue
+#     - user
+#     - cart
+#     - payment
+#     - shipping
+#     - dispatch
+#     - parameter-store-init-container-image
+#     - schema-loader
 
 
 
