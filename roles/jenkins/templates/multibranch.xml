@@ -55,7 +55,7 @@
                     <apiUri>https://api.github.com</apiUri>
                     <credentialsId>TOKEN</credentialsId>
                     <repoOwner>MMR-46org</repoOwner>
-                    <repository>cart</repository>
+                    <repository>{{item}}</repository>
                     <repositoryUrl>https://github.com/MMR-46org/{{item}}</repositoryUrl>
                     <traits>
                         <org.jenkinsci.plugins.github__branch__source.BranchDiscoveryTrait>
