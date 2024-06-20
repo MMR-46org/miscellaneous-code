@@ -34,6 +34,8 @@
      - cart
      - payment
      - shipping
+     - parameter-store-init-container-image
+     - schema-loader
 
 
 
