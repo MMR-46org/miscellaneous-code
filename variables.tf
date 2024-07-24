@@ -1,11 +1,11 @@
 variable "tools" {
   default = {
-    sonarqube = {
-      instance_type = "t3.large"
-      port        =  9000
-      priority    =  100
-      policy_list = []
-    }
+#    sonarqube = {
+#      instance_type = "t3.large"
+#      port        =  9000
+#      priority    =  100
+#      policy_list = []
+#    }
 
     elasticsearch = {
       instance_type = "m6in.large"
@@ -35,12 +35,12 @@ variable "tools" {
 #      policy_list = []
 #    }
 
-    artifactory  = {
-      instance_type = "t3.medium"
-      port          =  8082
-      priority      =  105
-      policy_list = []
-    }
+#    artifactory  = {
+#      instance_type = "t3.medium"
+#      port          =  8082
+#      priority      =  105
+#      policy_list = []
+#    }
 
 
     load-gen  = {
