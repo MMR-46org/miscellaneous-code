@@ -1,1 +1,2 @@
 component: $component_name
+logfile_path: /var/log/nginx/access.log
